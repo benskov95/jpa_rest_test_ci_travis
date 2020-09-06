@@ -14,13 +14,19 @@ public class MovieFacade {
     
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
+        instance = new MovieFacade();
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        em.persist(new Movie("Bob's Revenge", "He's crazy", 2011));
+        em.persist(new Movie("Bob Strikes Back", "He is out for revenge this time", 2011));
         em.persist(new Movie("Autumn", "Very artsy and convoluted", 1973));
-        em.persist(new Movie("Superguy", "He's like a guy but super", 2016));
+        em.persist(new Movie("Superguy", "Just your average guy, but super", 2016));
         em.getTransaction().commit();
         em.close();
+
+        List<Movie> lol = instance.getAllMovies(); 
+        for (Movie m : lol) {
+            System.out.println(m.getTitle());
+        }
         
     }
     
