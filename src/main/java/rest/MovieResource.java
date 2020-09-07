@@ -61,7 +61,7 @@ public class MovieResource {
     public String getMoviesByReleaseYear(@PathParam("year") int year) {
         List<MovieDTO> wrapped = new ArrayList<>();
         try {
-            List<Movie> movies = FACADE.getMoviesByReleaseYear(year, FACADE);
+            List<Movie> movies = FACADE.getMoviesByReleaseYear(year);
             for (Movie m : movies) {
                 wrapped.add(new MovieDTO(m));
             }
