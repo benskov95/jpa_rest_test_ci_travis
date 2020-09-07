@@ -76,6 +76,8 @@ public class MovieFacadeTest {
         assertTrue(facade.getAllMovies().size() >= minimumSize);
     }
     
+   // CURSED METHOD BELOW
+    
 //    @Test
 //    public void testGetMoviesByReleaseYear() {
 //        int expectedSize = 1;
