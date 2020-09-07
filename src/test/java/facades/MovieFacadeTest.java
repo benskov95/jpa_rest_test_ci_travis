@@ -30,7 +30,7 @@ public class MovieFacadeTest {
        EntityManager em = emf.createEntityManager();
        
        m1 = new Movie("test1", "desc1", 2000);
-       m2 = new Movie("test2", "desc1", 2010);
+//       m2 = new Movie("test2", "desc1", 2010);
        
        try {
             em.getTransaction().begin();
