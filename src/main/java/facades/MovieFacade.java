@@ -86,8 +86,8 @@ public class MovieFacade {
         }
     }
     
-    public List<Movie> getMoviesByReleaseYear(int year) {
-        EntityManager em = instance.getEntityManager();
+    public List<Movie> getMoviesByReleaseYear(int year, MovieFacade facade) {
+        EntityManager em = facade.getEntityManager();
         try {
         TypedQuery query = 
         em.createQuery("SELECT m FROM Movie m WHERE m.releaseYear = :year", Movie.class);

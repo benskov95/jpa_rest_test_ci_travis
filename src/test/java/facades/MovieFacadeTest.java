@@ -78,7 +78,8 @@ public class MovieFacadeTest {
     
     @Test
     public void testGetMoviesByReleaseYear() {
-        assertTrue(facade.getMoviesByReleaseYear(2000).size() == 1);
+        int expectedSize = 1;
+        assertTrue(facade.getMoviesByReleaseYear(2000, facade).size() == expectedSize);
     }
     
     @Test
