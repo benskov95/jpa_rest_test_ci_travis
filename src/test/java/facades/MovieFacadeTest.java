@@ -77,14 +77,14 @@ public class MovieFacadeTest {
         assertTrue(facade.getAllMovies().size() >= minimumSize);
     }
     
-    // THE CURSED METHOD: 
-    // Kept having problems with this method when deploying with Travis.
-    // Previously I used assertEquals  to assert that the returned list would 
-    // have 1 object in it. On Travis it kept saying "expected 1 but was 2", 
-    // not sure why it added an extra one (or why it thought there were 2) 
-    // since every object added in this class has a unique releaseYear value. 
-    // Using >= solves the problem and isn't too far from the original test, 
-    // but obviously isn't the ideal solution.
+    /* THE CURSED METHOD: 
+    Kept having problems with this method when deploying with Travis.
+    Previously I used assertEquals  to assert that the returned list would 
+    have 1 object in it. On Travis it kept saying "expected 1 but was 2", 
+    not sure why it added an extra one (or why it thought there were 2) 
+     since every object added in this class has a unique releaseYear value. 
+     Using >= solves the problem and isn't too far from the original test, 
+     but obviously isn't the ideal solution. */
     @Test
     public void testGetMoviesByReleaseYear() {
         int expectedSize = 1;
