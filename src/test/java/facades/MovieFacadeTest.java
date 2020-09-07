@@ -72,18 +72,21 @@ public class MovieFacadeTest {
     
     @Test
     public void testGetAllMovies() {
-        assertTrue(facade.getAllMovies().size() >= 2);
+        int minimumSize = 2;
+        assertTrue(facade.getAllMovies().size() >= minimumSize);
     }
     
     @Test
     public void testGetMoviesByReleaseYear() {
-        assertTrue(facade.getMoviesByReleaseYear(2000).size() == 1);
+        int expectedSize = 1;
+        assertTrue(facade.getMoviesByReleaseYear(2000).size() == expectedSize);
     }
     
     @Test
     public void testGetMovieCount() {
         // Greater than or equal to 2 because I don't know the order the tests are run in.
-        assertTrue(facade.getMovieCount() >= 2);
+        int minimumSize = 2;
+        assertTrue(facade.getMovieCount() >= minimumSize);
     }
     
 
