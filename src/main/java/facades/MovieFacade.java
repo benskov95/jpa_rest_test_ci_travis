@@ -1,6 +1,7 @@
 package facades;
 
 import entities.Movie;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -64,11 +65,14 @@ public class MovieFacade {
         }
     }
     
-    public Movie getMovieByID(int id) {
+    // Changed return type to List because of Resource test
+    public List<Movie> getMovieByID(int id) {
         EntityManager em = getEntityManager();
+        List<Movie> movie = new ArrayList<>();
         try {
             Movie m = em.find(Movie.class, id);
-            return m;
+            movie.add(m);
+            return movie;
         } finally {
             em.close();
         }
@@ -94,6 +98,19 @@ public class MovieFacade {
         query.setParameter("year", year);
         List<Movie> movies = query.getResultList();
         return movies;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Movie> getMoviesByTitle(String input) {
+        EntityManager em = instance.getEntityManager();
+        try {
+            TypedQuery query =
+            em.createQuery("SELECT m FROM Movie m WHERE m.title LIKE :input", Movie.class);
+            query.setParameter("input", "%" +  input + "%");
+            List<Movie> movies = query.getResultList();
+            return movies;
         } finally {
             em.close();
         }

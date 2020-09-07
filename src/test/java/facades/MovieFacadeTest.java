@@ -2,6 +2,7 @@ package facades;
 
 import utils.EMF_Creator;
 import entities.Movie;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -66,8 +67,8 @@ public class MovieFacadeTest {
 
     @Test
     public void testGetMovieByID() {
-        Movie test = facade.getMovieByID(m1.getId());
-        assertEquals(test.getTitle(), m1.getTitle());
+        List<Movie> test = facade.getMovieByID(m1.getId());
+        assertEquals(m1.getTitle(), test.get(0).getTitle());
     }
     
     @Test
@@ -78,11 +79,19 @@ public class MovieFacadeTest {
     
    // CURSED METHOD BELOW
     
-//    @Test
-//    public void testGetMoviesByReleaseYear() {
-//        int expectedSize = 1;
-//        assertEquals(expectedSize, facade.getMoviesByReleaseYear(2000).size());
-//    }
+    @Test
+    public void testGetMoviesByReleaseYear() {
+        int expectedSize = 1;
+        assertEquals(expectedSize, facade
+        .getMoviesByReleaseYear(m1.getReleaseYear()).size());
+    }
+    
+    @Test
+    public void testGetMoviesByTitle() {
+        assertTrue(facade.getMoviesByTitle
+        (m2.getTitle()).get(0).getDescription()
+                .equals(m2.getDescription()));
+    }
     
     @Test
     public void testGetMovieCount() {

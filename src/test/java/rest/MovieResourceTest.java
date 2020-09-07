@@ -13,12 +13,15 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.hamcrest.Matchers;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
 public class MovieResourceTest {
@@ -82,27 +85,8 @@ public class MovieResourceTest {
         given().when().get("/movie").then().statusCode(200);
     }
     
-//    @Test
-//    public void testGetAllMovies() {
-//        given()
-//        .contentType("application/json")
-//        .get("/allmovies/").then()
-//        .assertThat(hamcrestMatchers, hasSize(4));
-//    }
-   
-    //This test assumes the database contains two rows
     @Test
-    public void testDummyMsg() throws Exception {
-        given()
-        .contentType("application/json")
-        .get("/movie/").then()
-        .assertThat()
-        .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("msg", equalTo("Hello World"));   
-    }
-    
-    @Test
-    public void testCount() throws Exception {
+    public void testGetMovieCount() throws Exception {
         given()
         .contentType("application/json")
         .get("/movie/count").then()
@@ -110,4 +94,37 @@ public class MovieResourceTest {
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("count", equalTo(2));   
     }
+    
+    @Test
+    public void testGetAllMovies() {
+        given()
+        .contentType("application/json")
+        .get("movie/allmovies").then()
+        .assertThat()
+        .statusCode(HttpStatus.OK_200.getStatusCode())
+        .body("allmovies", hasSize(2));
+    }
+    
+    @Test
+    public void testGetMovieByTitle() {
+        String title = m1.getTitle();
+        given()
+         .contentType("application/json")
+         .get("movie/by_title/{title}", title)
+         .then().assertThat()
+         .statusCode(HttpStatus.OK_200.getStatusCode())
+         .body("[0].title", equalTo(title));
+    }
+    
+    @Test
+    public void testGetMovieByID() {
+        int id = m2.getId();
+        given()
+         .contentType("application/json")
+         .get("movie/by_id/{id}", id)
+         .then().assertThat()
+         .statusCode(HttpStatus.OK_200.getStatusCode())
+         .body("[0].description", equalTo(m2.getDescription()));
+    }
+    
 }

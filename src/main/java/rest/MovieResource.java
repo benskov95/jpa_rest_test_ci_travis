@@ -45,9 +45,13 @@ public class MovieResource {
     @Path("/by_id/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByID(@PathParam("id") int id) {
+        List<MovieDTO> movieDTO = new ArrayList<>();
         try {
-            Movie movie = FACADE.getMovieByID(id);
-            MovieDTO movieDTO = new MovieDTO(movie);
+            List<Movie> movies = FACADE.getMovieByID(id);
+            for (Movie m : movies) {
+                movieDTO.add(new MovieDTO(m));
+            }
+//            MovieDTO movieDTO = new MovieDTO(movie);
             String jsonString = GSON.toJson(movieDTO);
             return jsonString;
         } catch (Exception e) {
@@ -75,18 +79,39 @@ public class MovieResource {
         } 
     }
     
+    @GET
+    @Path("/by_title/{title}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMoviesByTitle(@PathParam("title") String title) {
+         List<MovieDTO> wrapped = new ArrayList<>();
+        try {
+            List<Movie> movies = FACADE.getMoviesByTitle(title);
+            for (Movie m : movies) {
+                wrapped.add(new MovieDTO(m));
+            }
+            String jsonString = GSON.toJson(wrapped);
+            if (movies.isEmpty()) {
+                return "ERROR: There are no movies with the specified title (" + title + ").";
+            }
+            return jsonString;
+        } catch (Exception e) {
+            return "ERROR: Something went wrong";
+        } 
+    }
+    
+    @Path("count")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMovieCount() {
+        long count = FACADE.getMovieCount();
+        //System.out.println("--------------->"+count);
+        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+    }
     
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-    @Path("count")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getRenameMeCount() {
-        long count = FACADE.getMovieCount();
-        //System.out.println("--------------->"+count);
-        return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
-    }
+    
 }
