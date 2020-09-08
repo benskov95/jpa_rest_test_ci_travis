@@ -65,8 +65,8 @@ public class MovieResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        m1 = new Movie("test1", "desc1", 2000);
-        m2 = new Movie("test2", "desc1", 2010);
+        m1 = new Movie("testOne", "first description", 2000);
+        m2 = new Movie("testTwo", "second description", 2010);
        
         try {
             em.getTransaction().begin();
@@ -99,18 +99,18 @@ public class MovieResourceTest {
     public void testGetAllMovies() {
         given()
         .contentType("application/json")
-        .get("movie/allmovies").then()
+        .get("/movie/all").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("allmovies", hasSize(2));
+        .body("all", hasSize(2));
     }
     
     @Test
-    public void testGetMovieByTitle() {
+    public void testGetMoviesByTitle() {
         String title = m1.getTitle();
         given()
          .contentType("application/json")
-         .get("movie/by_title/{title}", title)
+         .get("/movie/by_title/{title}", title)
          .then().assertThat()
          .statusCode(HttpStatus.OK_200.getStatusCode())
          .body("[0].title", equalTo(title));
@@ -121,10 +121,10 @@ public class MovieResourceTest {
         int id = m2.getId();
         given()
          .contentType("application/json")
-         .get("movie/by_id/{id}", id)
+         .get("/movie/by_id/{id}", id)
          .then().assertThat()
          .statusCode(HttpStatus.OK_200.getStatusCode())
-         .body("[0].description", equalTo(m2.getDescription()));
+         .body("description", equalTo(m2.getDescription()));
     }
     
 }

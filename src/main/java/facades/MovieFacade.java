@@ -66,13 +66,11 @@ public class MovieFacade {
     }
     
     // Changed return type to List because of Resource test
-    public List<Movie> getMovieByID(int id) {
+    public Movie getMovieByID(int id) {
         EntityManager em = getEntityManager();
-        List<Movie> movie = new ArrayList<>();
         try {
             Movie m = em.find(Movie.class, id);
-            movie.add(m);
-            return movie;
+            return m;
         } finally {
             em.close();
         }

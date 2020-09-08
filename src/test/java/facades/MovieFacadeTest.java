@@ -30,8 +30,8 @@ public class MovieFacadeTest {
        facade = MovieFacade.getFacadeExample(emf);
        EntityManager em = emf.createEntityManager();
        
-       m1 = new Movie("test1", "desc1", 2000);
-       m2 = new Movie("test2", "desc1", 2010);
+       m1 = new Movie("testOne", "first description", 2000);
+       m2 = new Movie("testTwo", "second description", 2010);
        
        try {
             em.getTransaction().begin();
@@ -67,8 +67,8 @@ public class MovieFacadeTest {
 
     @Test
     public void testGetMovieByID() {
-        List<Movie> test = facade.getMovieByID(m1.getId());
-        assertEquals(m1.getTitle(), test.get(0).getTitle());
+        Movie test = facade.getMovieByID(m1.getId());
+        assertEquals(m1.getTitle(), test.getTitle());
     }
     
     @Test

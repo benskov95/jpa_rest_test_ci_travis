@@ -25,7 +25,7 @@ public class MovieResource {
             
     
     @GET
-    @Path("/allmovies")
+    @Path("/all")
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllMovies() {
         List<MovieDTO> wrapped = new ArrayList<>();
@@ -45,13 +45,9 @@ public class MovieResource {
     @Path("/by_id/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByID(@PathParam("id") int id) {
-        List<MovieDTO> movieDTO = new ArrayList<>();
         try {
-            List<Movie> movies = FACADE.getMovieByID(id);
-            for (Movie m : movies) {
-                movieDTO.add(new MovieDTO(m));
-            }
-//            MovieDTO movieDTO = new MovieDTO(movie);
+            Movie movie = FACADE.getMovieByID(id);
+            MovieDTO movieDTO = new MovieDTO(movie);
             String jsonString = GSON.toJson(movieDTO);
             return jsonString;
         } catch (Exception e) {
