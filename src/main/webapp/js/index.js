@@ -6,10 +6,10 @@ let url = "https://bencat.dk/movieproject/api/movie/";
 
 var controller = document.getElementById("controller");
 var table = document.getElementById("fortable");
-var testicle = document.querySelectorAll("input.options");
+var buttons = document.querySelectorAll("input.options");
 var viewAllNoDto = false;
 
-testicle.forEach(function(element) {
+buttons.forEach(function(element) {
     element.addEventListener("click", fetchData, false);
 });
 
