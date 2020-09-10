@@ -95,6 +95,20 @@ public class MovieResource {
         } 
     }
     
+     // Made for the Friday exercise, just to show everything Movie objects contain.
+    @GET
+    @Path("/all_no_dto")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getAllMoviesNoDTO() {
+        try {
+            List<Movie> movies = FACADE.getAllMovies();
+            String jsonString = GSON.toJson(movies);
+            return jsonString;
+        } catch (Exception e) {
+            return "ERROR: Something went wrong.";
+        }
+    }
+    
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})

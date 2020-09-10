@@ -1,10 +1,54 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Movie project with Travis</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Movie Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
-    <body>
-        <h1>This is Benjamin's project.</h1>
+    <body style="background-image: url('https://redesigningsarah.files.wordpress.com/2012/09/dsc_0733.jpg')">
+        
+        <div class="col-lg-4" style="margin-left: auto; margin-right: 
+        auto; text-align: center; background-color: white; border: solid red 3px">
+         
+        <h1>Benjamin's movie project</h1>
+        
+        <br>
+        <div style="border: solid black 1px">
+        <p class="lead">Click 'Get All'/'Get All (No DTO) to see all<br>
+            movies in the database. Enter an ID, title or <br>
+            year and click on their respective buttons<br>
+            to find a movie based on one
+            of those<br> attributes.
+            <br>
+            <br>
+            You don't have to write complete titles <br>when searching (try 'bob', for example).
+        </p>
+        </div>
+        
+        <br>
+        <br>
+        
+        <div id='controller'>
+        <form action="#" style="padding: 30px">
+        <input type="text" id="input" name="id" value="">
+        <br>
+        <br>
+        <input type="submit" class="options" id="getAll" value="Get All">
+        <input type="submit" class="options" id="getById" value="Get By ID">
+        <input type="submit" class="options" id="getByTitle" value="Get By Title">
+        <input type="submit" class="options" id="getByYear" value="Get By Year">
+        <input type="submit" class="options" id="getAllNoDto" value="Get All (No DTO)">
+        </form>
+        </div>
+        
+        <div id="fortable">
+        </div>
+        
+        <br>
+        </div>
+        
     </body>
+    
+    <script src="js/index.js"></script>
+    
 </html>
