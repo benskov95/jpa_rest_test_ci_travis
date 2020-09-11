@@ -1,54 +1,80 @@
+<!DOCTYPE html>
 <html>
+
     <head>
-        <title>Movie Project</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Movie project startpage</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body style="background-image: url('https://redesigningsarah.files.wordpress.com/2012/09/dsc_0733.jpg')">
+    
+    <body style="background: darkslategray">
         
-        <div class="col-lg-4" style="margin-left: auto; margin-right: 
-        auto; text-align: center; background-color: white; border: solid red 3px">
-         
-        <h1>Benjamin's movie project</h1>
+        <h1 style="text-align: center; color: white; margin-top: 10px">Movie project startpage - by Benjamin Skovgaard</h1>
         
-        <br>
-        <div style="border: solid black 1px">
-        <p class="lead">Click 'Get All'/'Get All (No DTO) to see all<br>
-            movies in the database. Enter an ID, title or <br>
-            year and click on their respective buttons<br>
-            to find a movie based on one
-            of those<br> attributes.
+        <p style="text-align: center; color: white; margin-top: 10px">
             <br>
             <br>
-            You don't have to write complete titles <br>when searching (try 'bob', for example).
+            This page contains links to all projects and exercises from week 3. 
+            <br>
+            <br>
+            I have completed all exercises for this week, and a link to the 
+            <br>
+            repository containing all projects can be found below, along with 
+            <br>
+            links to my Travis status page for this project, movie page with
+            <br>
+            fetch API and the Thursday exercises.
         </p>
-        </div>
         
-        <br>
-        <br>
+        <h4 style="text-align: center; margin-top: 20px; font-style: oblique">
+            <a href="https://github.com/benskov95/Flow1-Week3-projects" style="color: white">
+                GitHub link to all of the week 3 projects
+            </a>
+            <br>
+            <br>
+            </h4>
         
-        <div id='controller'>
-        <form action="#" style="padding: 30px">
-        <input type="text" id="input" name="id" value="">
-        <br>
-        <br>
-        <input type="submit" class="options" id="getAll" value="Get All">
-        <input type="submit" class="options" id="getById" value="Get By ID">
-        <input type="submit" class="options" id="getByTitle" value="Get By Title">
-        <input type="submit" class="options" id="getByYear" value="Get By Year">
-        <input type="submit" class="options" id="getAllNoDto" value="Get All (No DTO)">
-        </form>
-        </div>
+        <div class="container" style="border: solid white 3px">
+        <h5 style="text-align: center; margin-top: 50px">
+            <a href="exercises/ex1.html" style="color: white">
+                Exercise 1 (Thursday)
+            </a>
+            <br>
+            <br>
+            <a href="exercises/ex2.html" style="color: white">
+                Exercise 2 (Thursday)
+            </a>
+            <br>
+            <br>
+            <a href="exercises/ex3.html" style="color: white">
+                Exercise 3 (Thursday)
+            </a>
+            <br>
+            <br>
+            <a href="exercises/ex4.html" style="color: white">
+                Exercise 4 (Thursday)
+            </a>
+            <br>
+            <br>
+            <a href="exercises/ex5.html" style="color: white">
+                Exercise 5 (Thursday)
+            </a>
+            <br>
+            <br>
+            <br>
+            <a href="http://localhost:8080/jpareststarter/movie_fetch.html" style="color: white">
+                <strong style="color: yellow">Movie project with fetch API</strong>
+            </a>
+            <br>
+            <br>
+            <a href="https://travis-ci.org/github/benskov95/movie_project" style="color: white">
+                Link to Travis status page for movie project
+            </a>
+            <br>
+            <br>
+        </h5>
         
-        <div id="fortable">
-        </div>
-        
-        <br>
-        </div>
-        
+                </div>
+    
     </body>
-    
-    <script src="js/index.js"></script>
-    
 </html>
